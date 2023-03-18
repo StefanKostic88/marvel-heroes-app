@@ -1,6 +1,6 @@
 import { CostumButtonStyled } from "../UiStyles/UiStyles";
-const CustomButton = ({ children, color, boxShadow, borderRadius }) => {
-  return <CostumButtonStyled>{children}</CostumButtonStyled>;
+const CustomButton = ({ children, onClick }) => {
+  return <CostumButtonStyled onClick={onClick}>{children}</CostumButtonStyled>;
 };
 
 export default CustomButton;

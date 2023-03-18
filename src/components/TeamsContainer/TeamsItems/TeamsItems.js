@@ -7,7 +7,7 @@ import {
   TeamsItemCardHeadingStyled,
 } from "../TeamContainerStyles";
 
-const TeamsItems = () => {
+const TeamsItems = ({ name, id, img, onClick }) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseOver = () => {
@@ -18,7 +18,11 @@ const TeamsItems = () => {
     setIsHovering(false);
   };
   return (
-    <TeamsItemsStlyed onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+    <TeamsItemsStlyed
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      onClick={onClick}
+    >
       <TeamsItemsCardStlyed>
         <TeamsItemCardImgContainerStyled>
           {isHovering ? (
@@ -28,11 +32,11 @@ const TeamsItems = () => {
               }}
             />
           ) : (
-            <img src="http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg" />
+            <img src={img} alt={img} />
           )}
         </TeamsItemCardImgContainerStyled>
         <TeamsItemCardHeadingStyled>
-          <h4>Some Hero</h4>
+          <h4>{name}</h4>
         </TeamsItemCardHeadingStyled>
       </TeamsItemsCardStlyed>
     </TeamsItemsStlyed>

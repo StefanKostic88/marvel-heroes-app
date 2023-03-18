@@ -1,5 +1,11 @@
+import { HeroCard } from "./components";
 const App = () => {
-  return <div>App</div>;
+  return (
+    <div>
+      App
+      <HeroCard />
+    </div>
+  );
 };
 
 export default App;

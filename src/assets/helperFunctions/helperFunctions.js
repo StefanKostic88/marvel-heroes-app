@@ -1,11 +1,30 @@
 const API_KEY = "eb5dbae24a4e3ca8983252245373f194";
 
-const getAllCharacters = async () => {
+export const getAllCharacters = async () => {
   const res = await fetch(
     `http://gateway.marvel.com/v1/public/characters?apikey=${API_KEY}`
   );
-  const data = await res.json();
-  console.log(data);
+  const {
+    data: { results },
+  } = await res.json();
+
+  const newData = results.map((el) => generateData(el));
+  console.log(newData);
+  return newData;
 };
 
 // getAllCharacters();
+
+const generateData = ({
+  name,
+  id,
+  thumbnail: { path, extension },
+  // collectionURL,
+  urls,
+}) => ({
+  name,
+  id,
+  img: `${path}.${extension}`,
+  // collectionURL,
+  urls,
+});

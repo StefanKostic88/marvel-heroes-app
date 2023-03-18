@@ -1,47 +1,41 @@
+import { useState } from "react";
+import { MdDeleteForever } from "react-icons/md";
+import {
+  TeamsItemsStlyed,
+  TeamsItemsCardStlyed,
+  TeamsItemCardImgContainerStyled,
+  TeamsItemCardHeadingStyled,
+} from "../TeamContainerStyles";
+
 const TeamsItems = () => {
-  // hovered ? icona: img
+  const [isHovering, setIsHovering] = useState(false);
 
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
   return (
-    <li
-      style={{
-        gap: "10px",
-        borderRadius: "7px",
-        overflow: "hidden",
-        background: "red",
-        cursor: "pointer",
-      }}
-    >
-      <figure
-        style={{
-          display: "flex",
-          gap: "10px",
-
-          alignContent: "center",
-        }}
-      >
-        <div style={{ height: "60px", width: "60px" }}>
-          <img
-            src="http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"
-            style={{
-              display: "block",
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
-              objectPosition: "center",
-            }}
-          />
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <h3>Some Hero</h3>
-        </div>
-      </figure>
-    </li>
+    <TeamsItemsStlyed onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+      <TeamsItemsCardStlyed>
+        <TeamsItemCardImgContainerStyled>
+          {isHovering ? (
+            <MdDeleteForever
+              onClick={() => {
+                console.log("deleted item");
+              }}
+            />
+          ) : (
+            <img src="http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg" />
+          )}
+        </TeamsItemCardImgContainerStyled>
+        <TeamsItemCardHeadingStyled>
+          <h4>Some Hero</h4>
+        </TeamsItemCardHeadingStyled>
+      </TeamsItemsCardStlyed>
+    </TeamsItemsStlyed>
   );
 };
 

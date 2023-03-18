@@ -1,7 +1,6 @@
+import { FooterStyles } from "./FooterStyles";
 const Footer = () => {
-  return (
-    <footer style={{ minHeight: "8vh", background: "black" }}>Footer</footer>
-  );
+  return <FooterStyles>Footer</FooterStyles>;
 };
 
 export default Footer;

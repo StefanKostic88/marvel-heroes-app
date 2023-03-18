@@ -1,18 +1,12 @@
 import { MainContent, CardContainer, TeamsContainer } from "../../components";
+import { HomePageInnerStyled } from "./HomePageStyles";
 const HomePage = () => {
   return (
     <MainContent>
-      <div
-        style={{
-          display: "flex",
-          padding: "30px",
-          background: "aqua",
-          gap: "40px",
-        }}
-      >
+      <HomePageInnerStyled>
         <CardContainer />
         <TeamsContainer />
-      </div>
+      </HomePageInnerStyled>
     </MainContent>
   );
 };

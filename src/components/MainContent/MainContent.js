@@ -1,15 +1,13 @@
+import {
+  MainContentOterStyled,
+  MainContentInnerStyled,
+} from "./MainContentStyles";
+
 const MainContent = ({ children }) => {
   return (
-    <main
-      style={{
-        minHeight: "calc(100vh - 16vh)",
-
-        maxWidth: "1400px",
-        margin: "0 auto",
-      }}
-    >
-      {children}
-    </main>
+    <MainContentOterStyled>
+      <MainContentInnerStyled>{children}</MainContentInnerStyled>
+    </MainContentOterStyled>
   );
 };
 export default MainContent;

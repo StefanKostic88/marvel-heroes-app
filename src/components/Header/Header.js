@@ -1,5 +1,26 @@
+import {
+  HeaderStyled,
+  HeaderInnerContainerStyled,
+  NavListStyled,
+} from "./HeaderStyles";
 const Header = () => {
-  return <nav style={{ minHeight: "8vh", background: "black" }}>Header</nav>;
+  return (
+    <HeaderStyled>
+      <HeaderInnerContainerStyled>
+        <NavListStyled>
+          <li>
+            <h4>Character</h4>
+          </li>
+          <li>
+            <h4>Comics</h4>
+          </li>
+          <li>
+            <h4>Comics</h4>
+          </li>
+        </NavListStyled>
+      </HeaderInnerContainerStyled>
+    </HeaderStyled>
+  );
 };
 
 export default Header;

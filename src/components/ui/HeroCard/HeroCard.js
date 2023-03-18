@@ -10,7 +10,7 @@ const HeroCard = () => {
   return (
     <figure
       style={{
-        maxWidth: "300px",
+        // maxWidth: "350px",
         boxShadow: "0 0 25px 3px black",
         padding: "5px 0",
         borderRadius: "7px",

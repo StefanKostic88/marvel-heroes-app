@@ -1,10 +1,13 @@
-import { HeroCard } from "./components";
+import { Routes, Route } from "react-router";
+import { Root, HomePage } from "./pages";
+
 const App = () => {
   return (
-    <div>
-      App
-      <HeroCard />
-    </div>
+    <Routes>
+      <Route path={"/"} element={<Root />}>
+        <Route path={"/"} element={<HomePage />}></Route>
+      </Route>
+    </Routes>
   );
 };
 

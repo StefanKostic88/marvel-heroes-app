@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import HeroContext from "../../store/hero-data-contex/hero-data-contex";
 import TeamsItems from "./TeamsItems/TeamsItems";
 import {
   TeamContainerStyled,
@@ -5,15 +7,13 @@ import {
   TeamContainerHeadingStyled,
 } from "./TeamContainerStyles";
 
-import HeroContext from "../../store/hero-data-contex/hero-data-contex";
-import { useContext } from "react";
-
 const TeamsContainer = () => {
-  const { heroTeamArr, removeHeroFromTeamHandler } = useContext(HeroContext);
-  console.log(heroTeamArr, removeHeroFromTeamHandler);
+  const { heroTeamArr, maxHeroTeamCap, removeHeroFromTeamHandler } =
+    useContext(HeroContext);
+
   return (
     <TeamContainerStyled>
-      <TeamContainerHeadingStyled>My Team</TeamContainerHeadingStyled>
+      <TeamContainerHeadingStyled>{maxHeroTeamCap}</TeamContainerHeadingStyled>
       <TeamContainerListStyled>
         {heroTeamArr.map((character) => (
           <TeamsItems
@@ -24,9 +24,6 @@ const TeamsContainer = () => {
             }}
           />
         ))}
-        {/* <TeamsItems />
-        <TeamsItems />
-        <TeamsItems /> */}
       </TeamContainerListStyled>
     </TeamContainerStyled>
   );

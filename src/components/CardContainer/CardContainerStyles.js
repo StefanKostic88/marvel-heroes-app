@@ -16,6 +16,7 @@ export const CardGridContainerStyled = styled.div`
 
 export const HeroCardStyled = styled.figure`
   box-shadow: inset 0 0 0 1px #5a5a5a;
+  min-width: 30rem;
   padding: 5px 0;
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: black;
@@ -30,8 +31,9 @@ export const HeroCardContentStyled = styled.div`
 `;
 
 export const HeroCardImageContainerStyled = styled.div`
-  height: 28rem;
+  height: 30rem;
   margin-bottom: 2.5rem;
+  position: relative;
   img {
     object-fit: cover;
     width: 100%;
@@ -43,4 +45,11 @@ export const HeroCardImageContainerStyled = styled.div`
 export const HeroCardHeadingStyled = styled.h3`
   padding: 1.5rem 0 2rem;
   text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  background-color: #00000080;
+  min-height: 100%;
 `;

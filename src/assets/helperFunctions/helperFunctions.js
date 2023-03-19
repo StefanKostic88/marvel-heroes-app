@@ -9,11 +9,9 @@ export const getAllCharacters = async () => {
   } = await res.json();
 
   const newData = results.map((el) => generateData(el));
-  console.log(newData);
+
   return newData;
 };
-
-// getAllCharacters();
 
 const generateData = ({
   name,

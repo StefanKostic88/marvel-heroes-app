@@ -6,27 +6,19 @@ import {
   HeroCardHeadingStyled,
 } from "../CardContainerStyles";
 
-import { useContext } from "react";
-import HeroContext from "../../../store/hero-data-contex/hero-data-contex";
-
-const HeroCard = ({ name, img, id }) => {
-  const { addHeroToTeamHandler, getHeroInfo } = useContext(HeroContext);
-  const getInfoHandler = (id) => {
-    // console.log(id);
-    getHeroInfo(id);
-    //get individual Hero Info
+const HeroCard = ({ name, img, id, onAddHeroToTeam, onGetHeroInfo }) => {
+  const getInfoHandler = (heroId) => {
+    onGetHeroInfo(heroId);
   };
 
-  const addHeroHandler = (id) => {
-    // console.log(id);
-    addHeroToTeamHandler(id);
-    //Add hero To Teams Component
+  const addHeroHandler = (heroId) => {
+    onAddHeroToTeam(heroId);
   };
 
   return (
     <HeroCardStyled>
-      <HeroCardHeadingStyled>{name}</HeroCardHeadingStyled>
       <HeroCardImageContainerStyled>
+        <HeroCardHeadingStyled>{name}</HeroCardHeadingStyled>
         <img src={img} alt={img} />
       </HeroCardImageContainerStyled>
       <HeroCardContentStyled>

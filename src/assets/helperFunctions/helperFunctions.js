@@ -7,7 +7,7 @@ export const getAllCharacters = async () => {
   const {
     data: { results },
   } = await res.json();
-
+  console.log(results);
   const newData = results.map((el) => generateData(el));
 
   return newData;

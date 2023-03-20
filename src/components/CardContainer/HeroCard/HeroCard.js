@@ -4,6 +4,14 @@ import {
   HeroCardContentStyled,
   HeroCardImageContainerStyled,
   HeroCardHeadingStyled,
+  ////
+  Card,
+  CardImageContainer,
+  CardHeading,
+  Lines,
+  Content,
+  Details,
+  ButnCont,
 } from "../CardContainerStyles";
 
 const HeroCard = ({ name, img, id, onAddHeroToTeam, onGetHeroInfo }) => {
@@ -16,7 +24,34 @@ const HeroCard = ({ name, img, id, onAddHeroToTeam, onGetHeroInfo }) => {
   };
 
   return (
-    <HeroCardStyled>
+    <Card>
+      <Lines></Lines>
+      <CardImageContainer>
+        <img src={img} alt={img} />
+      </CardImageContainer>
+      <Content>
+        <Details>
+          <CardHeading>{name}</CardHeading>
+          <ButnCont>
+            <button>Info</button>
+            <button
+              onClick={() => {
+                addHeroHandler(id);
+              }}
+            >
+              Add
+            </button>
+          </ButnCont>
+        </Details>
+      </Content>
+    </Card>
+  );
+};
+
+export default HeroCard;
+
+{
+  /* <HeroCardStyled>
       <HeroCardImageContainerStyled>
         <HeroCardHeadingStyled>{name}</HeroCardHeadingStyled>
         <img src={img} alt={img} />
@@ -37,8 +72,5 @@ const HeroCard = ({ name, img, id, onAddHeroToTeam, onGetHeroInfo }) => {
           Add
         </CustomButton>
       </HeroCardContentStyled>
-    </HeroCardStyled>
-  );
-};
-
-export default HeroCard;
+    </HeroCardStyled> */
+}

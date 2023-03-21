@@ -1,4 +1,4 @@
-import HeroCard from "./HeroCard/HeroCard";
+import { CostumInputControls, HeroCard } from "../../components";
 import {
   CardContainerStyled,
   CardContainerHeadingStyled,
@@ -8,21 +8,48 @@ import { useEffect, useState, useContext } from "react";
 import heroContext from "../../store/hero-data-contex/hero-data-contex";
 
 const CardContainer = () => {
-  const [characters, setCharacters] = useState(null);
-  const { charactersArr, addHeroToTeamHandler, getHeroInfo } =
-    useContext(heroContext);
+  const [heroSearchTearm, setHeroSearchTearm] = useState("");
+  const {
+    charactersArr,
+    addHeroToTeamHandler,
+    getHeroInfo,
+    curentHeroCardsPage,
+  } = useContext(heroContext);
 
   useEffect(() => {
-    setCharacters(() => [...charactersArr]);
-  }, [charactersArr]);
+    let searchTimer;
+    if (heroSearchTearm === "") {
+      curentHeroCardsPage(heroSearchTearm);
+      clearTimeout(searchTimer);
+      return;
+    }
+    searchTimer = setTimeout(() => {
+      curentHeroCardsPage(heroSearchTearm);
+    }, 1500);
+    return () => {
+      clearTimeout(searchTimer);
+    };
+  }, [heroSearchTearm]);
 
-  if (!characters) return <div>Loading...</div>;
+  if (!charactersArr) return <div>Loading...</div>;
 
   return (
     <CardContainerStyled>
       <CardContainerHeadingStyled>My Heroes</CardContainerHeadingStyled>
+      <CostumInputControls
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        value={heroSearchTearm}
+        type="text"
+        placeholder="Search"
+        onChange={(e) => {
+          setHeroSearchTearm(() => e.target.value);
+        }}
+      />
+
       <CardGridContainerStyled>
-        {characters.map((character) => (
+        {charactersArr.map((character) => (
           <HeroCard
             {...character}
             key={character.id}

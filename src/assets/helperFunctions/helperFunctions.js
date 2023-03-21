@@ -7,9 +7,23 @@ export const getAllCharacters = async () => {
   const {
     data: { results },
   } = await res.json();
-  console.log(results);
+  // console.log(results);
   const newData = results.map((el) => generateData(el));
 
+  return newData;
+};
+
+export const getFilteredHeroesData = async (searchTearm) => {
+  console.log(searchTearm);
+  if (!searchTearm) return;
+
+  const res = await fetch(
+    `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchTearm}&apikey=${API_KEY}`
+  );
+  const {
+    data: { results },
+  } = await res.json();
+  const newData = results.map((el) => generateData(el));
   return newData;
 };
 

@@ -2,7 +2,10 @@ import { MainContent, CardContainer, TeamsContainer } from "../../components";
 import { HomePageInnerStyled } from "./HomePageStyles";
 import HeroContext from "../../store/hero-data-contex/hero-data-contex";
 import { useEffect, useState } from "react";
-import { getAllCharacters } from "../../assets/helperFunctions/helperFunctions";
+import {
+  getAllCharacters,
+  getFilteredHeroesData,
+} from "../../assets/helperFunctions/helperFunctions";
 
 const dataArr = [
   {
@@ -32,25 +35,32 @@ const dataArr = [
   },
 ];
 
+// const getCharacterData = async (id) => {
+//   const res = fetch(
+//     `gateway.marvel.com:443/v1/public/characters/${id}?apikey=eb5dbae24a4e3ca8983252245373f194`
+//   );
+//   const data = await res.json();
+//   console.log(data);
+// };
+
 const HomePage = () => {
   const [heros, setHeros] = useState([]);
   const [heroTeam, setHeroTeam] = useState([]);
   const [heroInfo, setHeroInfo] = useState({});
   const [maxCapMessage, setMaxCapMessage] = useState("Select Team");
-  console.log(heroInfo);
+
+  const getAllHeroesData = async () => {
+    const allHeroesData = await getAllCharacters();
+    setHeros(() => [...allHeroesData]);
+  };
+
   useEffect(() => {
     //fetch all heroes
     setHeros(() => [...dataArr]);
     // get team from local storage
     // setHeroTeam(() => [...dataArr]);
 
-    // const getAllHeroesData = async () => {
-    //   const allHeroesData = await getAllCharacters();
-    //   setHeros(() => [...allHeroesData]);
-    // };
     // getAllHeroesData();
-
-    // console.log(allHeroesData);
   }, []);
   useEffect(() => {
     if (heroTeam.length === 5) {
@@ -90,6 +100,14 @@ const HomePage = () => {
           getHeroInfo: (id) => {
             const selectedHero = heros.find((hero) => hero.id === id);
             setHeroInfo(() => ({ ...selectedHero }));
+          },
+          curentHeroCardsPage: async (searchTearm) => {
+            if (!searchTearm) {
+              getAllHeroesData();
+              return;
+            }
+            const newArr = await getFilteredHeroesData(searchTearm);
+            setHeros(() => [...newArr]);
           },
         }}
       >

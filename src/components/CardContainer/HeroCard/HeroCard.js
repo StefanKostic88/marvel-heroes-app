@@ -1,22 +1,16 @@
-import CustomButton from "../../ui/CustomButton/CustomButton";
 import {
   HeroCardStyled,
   HeroCardContentStyled,
   HeroCardImageContainerStyled,
   HeroCardHeadingStyled,
-  ////
-  Card,
-  CardImageContainer,
-  CardHeading,
-  Lines,
-  Content,
-  Details,
-  ButnCont,
+  CardDetailsStyled,
+  CardLinesStyled,
+  ButtonGroupStyled,
 } from "../CardContainerStyles";
 
 const HeroCard = ({ name, img, id, onAddHeroToTeam, onGetHeroInfo }) => {
-  // console.log(id);
   const getInfoHandler = (heroId) => {
+    console.log(heroId);
     onGetHeroInfo(heroId);
   };
 
@@ -25,16 +19,22 @@ const HeroCard = ({ name, img, id, onAddHeroToTeam, onGetHeroInfo }) => {
   };
 
   return (
-    <Card>
-      <Lines></Lines>
-      <CardImageContainer>
+    <HeroCardStyled>
+      <CardLinesStyled />
+      <HeroCardImageContainerStyled>
         <img src={img} alt={img} />
-      </CardImageContainer>
-      <Content>
-        <Details>
-          <CardHeading>{name}</CardHeading>
-          <ButnCont>
-            <button>Info</button>
+      </HeroCardImageContainerStyled>
+      <HeroCardContentStyled>
+        <CardDetailsStyled>
+          <HeroCardHeadingStyled>{name}</HeroCardHeadingStyled>
+          <ButtonGroupStyled>
+            <button
+              onClick={() => {
+                getInfoHandler(id);
+              }}
+            >
+              Info
+            </button>
             <button
               onClick={() => {
                 console.log(id);
@@ -43,10 +43,10 @@ const HeroCard = ({ name, img, id, onAddHeroToTeam, onGetHeroInfo }) => {
             >
               Add
             </button>
-          </ButnCont>
-        </Details>
-      </Content>
-    </Card>
+          </ButtonGroupStyled>
+        </CardDetailsStyled>
+      </HeroCardContentStyled>
+    </HeroCardStyled>
   );
 };
 

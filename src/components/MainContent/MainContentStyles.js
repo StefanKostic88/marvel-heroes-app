@@ -16,6 +16,8 @@ export const MainContentOterStyled = styled.div`
     background: ${({ theme }) => theme.backGroundOverlayLinear};
     background: ${({ theme }) => theme.backgroundLinear};
   }
+
+  min-height: calc(100vh + 16vh);
 `;
 export const MainContentInnerStyled = styled.main`
   min-height: calc(100vh - 16vh);

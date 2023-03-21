@@ -17,58 +17,19 @@ export const CardGridContainerStyled = styled.div`
 `;
 
 export const HeroCardStyled = styled.figure`
-  box-shadow: inset 0 0 0 1px #5a5a5a;
-  min-width: 30rem;
-  padding: 5px 0;
-  border-radius: ${({ theme }) => theme.borderRadius};
-  background-color: black;
-`;
-
-export const HeroCardContentStyled = styled.div`
-  padding: 2rem 1.5rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const HeroCardImageContainerStyled = styled.div`
-  height: 30rem;
-  margin-bottom: 2.5rem;
-  position: relative;
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    object-position: center;
-  }
-`;
-
-export const HeroCardHeadingStyled = styled.h3`
-  padding: 1.5rem 0 2rem;
-  text-align: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-
-  // background-color: #00000080;
-  min-height: 100%;
-`;
-
-export const Card = styled.figure`
   width: 280px;
   height: 250px;
   position: relative;
   background: #333;
   transition: 500ms;
+  cursor: pointer;
   &:hover {
     // height: 450px;
     height: 350px;
   }
 `;
 
-export const Lines = styled.div`
+export const CardLinesStyled = styled.div`
   position: absolute;
   inset: 0;
   background: #000;
@@ -106,18 +67,21 @@ export const Lines = styled.div`
   }
 `;
 
-export const CardImageContainer = styled.div`
+export const HeroCardImageContainerStyled = styled.div`
   position: absolute;
   top: -50px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: -25%;
+  transform: translateX(35%);
   width: 170px;
+
   height: 170px;
   background: #000;
   transition: 500ms;
   z-index: 10;
   overflow: hidden;
-  ${Card}:hover & {
+  ${HeroCardStyled}:hover & {
+    left: 50%;
+    transform: translateX(-50%);
     width: 260px;
     height: 260px;
   }
@@ -161,11 +125,15 @@ export const CardImageContainer = styled.div`
     height: calc(100% - 10px);
     top: 5px;
     left: 5px;
-    // filter: grayscale(1);
+    transition: 500ms;
+    filter: grayscale(1);
+    ${HeroCardStyled}:hover & {
+      filter: grayscale(0);
+    }
   }
 `;
 
-export const Content = styled.div`
+export const HeroCardContentStyled = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -175,17 +143,18 @@ export const Content = styled.div`
   overflow: hidden;
 `;
 
-export const Details = styled.div`
+export const CardDetailsStyled = styled.div`
   padding: 4rem 3.75rem 1rem;
   text-align: center;
   width: 100%;
-  tansition: 500ms;
-  // transform: translateY(60px);
-  ${Card}:hover & {
+  transition: 500ms;
+  transform: translateY(65px);
+  ${HeroCardStyled}:hover & {
+    transform: translateY(0);
   }
 `;
 
-export const CardHeading = styled.h3`
+export const HeroCardHeadingStyled = styled.h3`
   font-size: 1.95rem;
   font-weight: 600;
   color: #45f3ff;
@@ -197,7 +166,7 @@ export const CardHeading = styled.h3`
   min-height: 40px;
 `;
 
-export const ButnCont = styled.div`
+export const ButtonGroupStyled = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
@@ -211,6 +180,51 @@ export const ButnCont = styled.div`
     font-weight: 500;
     background: #45f3ff;
     color: #222;
-    curosr: pointer;
+    cursor: pointer;
   }
 `;
+
+// export const HeroCardStyled = styled.figure`
+//   box-shadow: inset 0 0 0 1px #5a5a5a;
+//   min-width: 30rem;
+//   padding: 5px 0;
+//   border-radius: ${({ theme }) => theme.borderRadius};
+//   background-color: black;
+// `;
+
+// export const HeroCardContentStyled = styled.div`
+//   padding: 2rem 1.5rem;
+//   display: flex;
+//   gap: 1rem;
+//   justify-content: center;
+//   align-items: center;
+// `;
+
+// export const HeroCardImageContainerStyled = styled.div`
+//   height: 30rem;
+//   margin-bottom: 2.5rem;
+//   position: relative;
+//   img {
+//     object-fit: cover;
+//     width: 100%;
+//     height: 100%;
+//     object-position: center;
+//   }
+// `;
+
+// export const HeroCardHeadingStyled = styled.h3`
+//   padding: 1.5rem 0 2rem;
+//   text-align: center;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+
+//   // background-color: #00000080;
+//   min-height: 100%;
+// `;
+
+// HeroCardStyled,
+//   HeroCardContentStyled,
+//   HeroCardImageContainerStyled,
+//   HeroCardHeadingStyled,

@@ -6,3 +6,5 @@ export { default as CustomButton } from "./ui/CustomButton/CustomButton";
 export { default as CardContainer } from "./CardContainer/CardContainer";
 export { default as TeamsContainer } from "./TeamsContainer/TeamsContainer";
 export { default as CostumInputControls } from "./ui/CostumInput/CostumInput";
+export { default as Modal } from "./Modal/Modal";
+export { default as Overlay } from "./Overlay/Overlay";

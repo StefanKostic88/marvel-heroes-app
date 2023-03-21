@@ -13,6 +13,17 @@ export const getAllCharacters = async () => {
   return newData;
 };
 
+export const getFilteredHeroesData = async (searchTearm) => {
+  const res = await fetch(
+    `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchTearm}&apikey=${API_KEY}`
+  );
+  const {
+    data: { results },
+  } = await res.json();
+  const newData = results.map((el) => generateData(el));
+  return newData;
+};
+
 const generateData = ({
   name,
   id,

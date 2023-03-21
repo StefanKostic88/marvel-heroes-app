@@ -161,7 +161,7 @@ export const CardImageContainer = styled.div`
     height: calc(100% - 10px);
     top: 5px;
     left: 5px;
-    filter: grayscale(1);
+    // filter: grayscale(1);
   }
 `;
 

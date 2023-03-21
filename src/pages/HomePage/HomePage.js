@@ -40,15 +40,15 @@ const HomePage = () => {
   console.log(heroInfo);
   useEffect(() => {
     //fetch all heroes
-    // setHeros(() => [...dataArr]);
+    setHeros(() => [...dataArr]);
     // get team from local storage
     // setHeroTeam(() => [...dataArr]);
 
-    const getAllHeroesData = async () => {
-      const allHeroesData = await getAllCharacters();
-      setHeros(() => [...allHeroesData]);
-    };
-    getAllHeroesData();
+    // const getAllHeroesData = async () => {
+    //   const allHeroesData = await getAllCharacters();
+    //   setHeros(() => [...allHeroesData]);
+    // };
+    // getAllHeroesData();
 
     // console.log(allHeroesData);
   }, []);

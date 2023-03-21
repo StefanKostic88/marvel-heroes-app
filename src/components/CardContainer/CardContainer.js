@@ -1,4 +1,3 @@
-// import HeroCard from "./HeroCard/HeroCard";
 import { CostumInputControls, HeroCard } from "../../components";
 import {
   CardContainerStyled,
@@ -8,68 +7,49 @@ import {
 import { useEffect, useState, useContext } from "react";
 import heroContext from "../../store/hero-data-contex/hero-data-contex";
 
-import { getFilteredHeroesData } from "../../assets/helperFunctions/helperFunctions";
-
 const CardContainer = () => {
-  const [characters, setCharacters] = useState(null);
-  const [filterCharacters, setFilterCharacters] = useState(null);
-
   const [heroSearchTearm, setHeroSearchTearm] = useState("");
-
-  const { charactersArr, addHeroToTeamHandler, getHeroInfo } =
-    useContext(heroContext);
+  const {
+    charactersArr,
+    addHeroToTeamHandler,
+    getHeroInfo,
+    curentHeroCardsPage,
+  } = useContext(heroContext);
 
   useEffect(() => {
-    setCharacters(() => [...charactersArr]);
-  }, [charactersArr]);
+    let searchTimer;
+    if (heroSearchTearm === "") {
+      curentHeroCardsPage(heroSearchTearm);
+      clearTimeout(searchTimer);
+      return;
+    }
+    searchTimer = setTimeout(() => {
+      curentHeroCardsPage(heroSearchTearm);
+    }, 1500);
+    return () => {
+      clearTimeout(searchTimer);
+    };
+  }, [heroSearchTearm]);
 
-  useEffect(() => {
-    if (!characters) return;
-    setFilterCharacters(() => [...characters]);
-  }, [characters]);
+  if (!charactersArr) return <div>Loading...</div>;
 
-  const onChangeHandler = async (e) => {
-    setHeroSearchTearm(() => e.target.value);
-
-    const searchTearm = e.target.value.toLowerCase();
-
-    const newArr = await getFilteredHeroesData(searchTearm);
-    console.log(newArr);
-
-    setFilterCharacters(() => [...newArr]);
-
-    // setFilterCharacters(() =>
-    //   characters.filter((hero) =>
-    //     hero.name.toLowerCase().startsWith(searchTearm)
-    //   )
-    // );
-  };
-
-  const onSubmitHandler = () => {
-    console.log(heroSearchTearm);
-  };
-
-  //komponenta na gore
-
-  if (!filterCharacters) return <div>Loading...</div>;
-  console.log(filterCharacters); // kad kliknes da ostane stanje
-  console.log(filterCharacters.length);
   return (
     <CardContainerStyled>
       <CardContainerHeadingStyled>My Heroes</CardContainerHeadingStyled>
       <CostumInputControls
         onSubmit={(e) => {
           e.preventDefault();
-          onSubmitHandler();
         }}
         value={heroSearchTearm}
         type="text"
         placeholder="Search"
-        onChange={onChangeHandler}
+        onChange={(e) => {
+          setHeroSearchTearm(() => e.target.value);
+        }}
       />
 
       <CardGridContainerStyled>
-        {filterCharacters.map((character) => (
+        {charactersArr.map((character) => (
           <HeroCard
             {...character}
             key={character.id}
@@ -83,5 +63,3 @@ const CardContainer = () => {
 };
 
 export default CardContainer;
-
-// nameStartsWith

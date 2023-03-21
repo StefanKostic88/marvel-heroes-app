@@ -15,7 +15,7 @@ import {
 } from "../CardContainerStyles";
 
 const HeroCard = ({ name, img, id, onAddHeroToTeam, onGetHeroInfo }) => {
-  console.log(id);
+  // console.log(id);
   const getInfoHandler = (heroId) => {
     onGetHeroInfo(heroId);
   };

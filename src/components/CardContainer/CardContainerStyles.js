@@ -1,4 +1,8 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import {
+  animatePrimaryColors,
+  animateSecondatyColors,
+} from "../../assets/animations/animations";
 
 export const CardContainerStyled = styled.div`
   flex: 5;
@@ -23,14 +27,18 @@ export const HeroCardStyled = styled.figure`
   background: #333;
   transition: 500ms;
   cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 1px 5px 5px 1px ${({ theme }) => theme.backGroundSecondary};
+
   &:hover {
-    // height: 450px;
     height: 350px;
+    box-shadow: 1px 1px 1px 1px ${({ theme }) => theme.backGroundSecondary};
   }
 `;
 
 export const CardLinesStyled = styled.div`
   position: absolute;
+  border-radius: 10px;
   inset: 0;
   background: #000;
   overflow: hidden;
@@ -42,37 +50,25 @@ export const CardLinesStyled = styled.div`
     transform: translate(-50%, -50%);
     width: 600px;
     height: 120px;
-    background: linear-gradient(
-      transparent,
-      #45f3ff,
-      #45f3ff,
-      #45f3ff,
-      transparent
-    );
-    animation: animate 4000ms linear infinite;
+    background: ${({ theme }) => theme.backgroundPrimaryLinearGradient};
+    animation: ${animatePrimaryColors} 4000ms linear infinite;
   }
   &:after {
     position: absolute;
     content: "";
     inset: 2px;
     background: #292929;
-  }
-  @keyframes animate {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
+    border-radius: 10px;
   }
 `;
 
 export const HeroCardImageContainerStyled = styled.div`
   position: absolute;
   top: -50px;
-  left: -25%;
+  left: -30%;
   transform: translateX(35%);
   width: 170px;
+  border-radius: 50%;
 
   height: 170px;
   background: #000;
@@ -81,9 +77,11 @@ export const HeroCardImageContainerStyled = styled.div`
   overflow: hidden;
   ${HeroCardStyled}:hover & {
     left: 50%;
+    // top: -80px;
     transform: translateX(-50%);
     width: 260px;
     height: 260px;
+    border-radius: 10px;
   }
   &:before {
     position: absolute;
@@ -93,14 +91,10 @@ export const HeroCardImageContainerStyled = styled.div`
     width: 500px;
     height: 150px;
     transform: translate(-50%, -50%);
-    background: linear-gradient(
-      transparent,
-      #ff3c7b,
-      #ff3c7b,
-      #ff3c7b,
-      transparent
-    );
-    animation: animate2 6000ms linear infinite;
+    background: ${({ theme }) => theme.backgroundPrimaryLinearGradient};
+    animation: ${animateSecondatyColors} 6000ms linear infinite;
+
+    border-radius: 10px;
   }
 
   &:after {
@@ -108,18 +102,12 @@ export const HeroCardImageContainerStyled = styled.div`
     content: "";
     background: #292929;
     inset: 3px;
-  }
-  @keyframes animate2 {
-    0% {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
+    border-radius: 10px;
   }
 
   img {
     position: absolute;
+    border-radius: 50%;
     z-index: 1;
     width: calc(100% - 10px);
     height: calc(100% - 10px);
@@ -129,6 +117,7 @@ export const HeroCardImageContainerStyled = styled.div`
     filter: grayscale(1);
     ${HeroCardStyled}:hover & {
       filter: grayscale(0);
+      border-radius: 10px;
     }
   }
 `;
@@ -171,60 +160,4 @@ export const ButtonGroupStyled = styled.div`
   justify-content: space-between;
   gap: 2rem;
   padding-bottom: 1rem;
-  button {
-    border: none;
-    padding: 10px 30px;
-    outline: none;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: 500;
-    background: #45f3ff;
-    color: #222;
-    cursor: pointer;
-  }
 `;
-
-// export const HeroCardStyled = styled.figure`
-//   box-shadow: inset 0 0 0 1px #5a5a5a;
-//   min-width: 30rem;
-//   padding: 5px 0;
-//   border-radius: ${({ theme }) => theme.borderRadius};
-//   background-color: black;
-// `;
-
-// export const HeroCardContentStyled = styled.div`
-//   padding: 2rem 1.5rem;
-//   display: flex;
-//   gap: 1rem;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
-// export const HeroCardImageContainerStyled = styled.div`
-//   height: 30rem;
-//   margin-bottom: 2.5rem;
-//   position: relative;
-//   img {
-//     object-fit: cover;
-//     width: 100%;
-//     height: 100%;
-//     object-position: center;
-//   }
-// `;
-
-// export const HeroCardHeadingStyled = styled.h3`
-//   padding: 1.5rem 0 2rem;
-//   text-align: center;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-
-//   // background-color: #00000080;
-//   min-height: 100%;
-// `;
-
-// HeroCardStyled,
-//   HeroCardContentStyled,
-//   HeroCardImageContainerStyled,
-//   HeroCardHeadingStyled,

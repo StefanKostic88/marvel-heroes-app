@@ -6,4 +6,21 @@ export const theme = {
   inputBorderColor: "#45f3ff",
   btnBackgroundColor: "#45f3ff",
   btnTextColor: "#222",
+
+  backGroundPrimary: "#45f3ff",
+  backGroundSecondary: "#ff3c7b",
+  backgroundSecondaryLinearGradient: `linear-gradient(
+    transparent,
+    #ff3c7b,
+    #ff3c7b,
+    #ff3c7b,
+    transparent
+  )`,
+  backgroundPrimaryLinearGradient: `linear-gradient(
+    transparent,
+    #45f3ff,
+    #45f3ff,
+    #45f3ff,
+    transparent
+  )`,
 };

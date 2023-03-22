@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import { Switch, FormControlLabel } from "@mui/material";
 
 export const ModalStyled = styled.div`
   // width: 60%;
   // height: 70%;
   // color: #fff;
 
-  width: 550px;
-  height: 500px;
+  width: 600px;
+  height: 80%;
   background: #333;
 
   ///
@@ -135,12 +136,15 @@ export const ModalDetailsStyled = styled.div`
   padding: 3.5rem;
   width: 100%;
   height: 70%;
-  bottom: 0;
+  bottom: 40%;
+  // top: 15%;
   gap: 2rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
+  background: rgba(0, 0, 0, 0.85);
+  // z-index: 10;
 `;
 
 export const ModalHedingPrimaryStyled = styled.h2`
@@ -155,4 +159,16 @@ export const ModalParagraphStyled = styled.p`
   font-size: 1.5rem;
   line-height: 1.6;
   text-align: center;
+`;
+
+export const ComicsContainerStyled = styled.div`
+  position: absolute;
+  bottom: 0.5%;
+  // left: 0.5%;
+  right: 0.5%;
+  // background: red;
+
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
 `;

@@ -8,3 +8,5 @@ export { default as TeamsContainer } from "./TeamsContainer/TeamsContainer";
 export { default as CostumInputControls } from "./ui/CostumInput/CostumInput";
 export { default as Modal } from "./Modal/Modal";
 export { default as Overlay } from "./Overlay/Overlay";
+export { default as CharacterDetailsContent } from "./CharacterDetailsContent/CharacterDetailsContent";
+export { default as CharacterDetialsComics } from "./CharacterDetialsComics/CharacterDetialsComics";

@@ -27,6 +27,29 @@ export const getFilteredHeroesData = async (searchTearm) => {
   return newData;
 };
 
+export const getSingleCharacter = async (charId) => {
+  const res = await fetch(
+    `https://gateway.marvel.com:443/v1/public/characters/${charId}?apikey=eb5dbae24a4e3ca8983252245373f194`
+  );
+  const {
+    data: { results },
+  } = await res.json();
+
+  const {
+    name,
+    description,
+    thumbnail: { path, extension },
+    id,
+  } = results[0];
+
+  return {
+    name,
+    description,
+    img: `${path}.${extension}`,
+    id,
+  };
+};
+
 const generateData = ({
   name,
   id,

@@ -41,15 +41,18 @@ export const TeamsItemCardImgContainerStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background: ${({ theme }) => theme.backgroundSecondaryLinearGradient};
+  border-radius: 50%;
 
   svg {
     width: 4rem;
     height: 4rem;
+    fill: black;
   }
   img {
     object-fit: cover;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     object-position: center;
     border-radius: 50%;
   }

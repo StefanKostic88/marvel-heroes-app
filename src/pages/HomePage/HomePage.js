@@ -40,13 +40,14 @@ const HomePage = () => {
       const heroIsPresent = heroTeam.find((hero) => hero.id === id);
 
       if (heroTeam.length === 5) return;
-
+      console.log(selectedHero);
       if (!heroIsPresent) {
         setHeroTeam((prev) => {
           localStorage.setItem(
             "heroTeam",
             JSON.stringify([...prev, selectedHero])
           );
+
           return [...prev, selectedHero];
         });
 

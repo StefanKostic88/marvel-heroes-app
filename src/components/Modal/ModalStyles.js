@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Switch, FormControlLabel } from "@mui/material";
 
 export const ModalStyled = styled.div`
   // width: 60%;

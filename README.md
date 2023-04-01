@@ -7,5 +7,5 @@ App wide state is managed via Contex API and useContext hook
 Base functionalities are:
 
 -initail hero cards render;
--options for adding specific hero to the them (cap at 5);
+-options for adding specific hero to the team (cap at 5);
 -options for viewing particular hero info page

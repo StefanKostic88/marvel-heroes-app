@@ -5,7 +5,7 @@ const data = JSON.parse(x);
 
 const useHomePage = (fetchAllHeroes, fetchSingleHero) => {
   const [heros, setHeros] = useState([]);
-  const [heroTeam, setHeroTeam] = useState([...data]);
+  const [heroTeam, setHeroTeam] = useState(data === null ? [] : [...data]);
   const [heroInfo, setHeroInfo] = useState(null);
   const [maxCapMessage, setMaxCapMessage] = useState("Select Team");
   const [modalIsVisible, setModalIsVisible] = useState(false);
